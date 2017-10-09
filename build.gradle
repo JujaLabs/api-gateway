@@ -72,11 +72,16 @@ test {
         println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
 }
-
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR3'
+    }
+}
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: 'spring-boot-starter-tomcat'
     }
+    compile 'org.springframework.cloud:spring-cloud-starter-zuul'
 
     compile 'org.springframework.boot:spring-boot-starter-jetty'
     compile 'javax.inject:javax.inject:1'

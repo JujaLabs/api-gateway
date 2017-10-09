@@ -9,5 +9,9 @@ cache:
     - $HOME/.m2
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+before_install:
+    - chmod +x gradlew
+before_script:
+    - sleep 15
 script:
   - ./gradlew test
