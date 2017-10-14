@@ -45,7 +45,7 @@ tasks.withType(JavaCompile) {
 import org.gradle.internal.os.OperatingSystem
 
 task buildDocker(type: Docker, dependsOn: build) {
-    if(OperatingSystem.current().isLinux()){
+    if (OperatingSystem.current().isLinux()) {
         dockerBinary = "sudo docker"
     }
     applicationName = jar.baseName
@@ -65,7 +65,7 @@ test.testLogging {
 }
 
 test {
-    filter{
+    filter {
         includeTestsMatching "ua.com.juja.microservices.apigateway.*"
     }
     afterTest { desc, result ->
@@ -82,6 +82,7 @@ dependencies {
         exclude module: 'spring-boot-starter-tomcat'
     }
     compile 'org.springframework.cloud:spring-cloud-starter-zuul'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 
     compile 'org.springframework.boot:spring-boot-starter-jetty'
     compile 'javax.inject:javax.inject:1'
